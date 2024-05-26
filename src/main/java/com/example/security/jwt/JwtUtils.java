@@ -42,18 +42,29 @@ public class JwtUtils {
                 .compact();
     }
 
-    public Key key(){
+    private Key key(){
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
 
+    /**
+     * Get username from token
+     * @param token
+     * @return
+     */
     public String getUsernameFromJwtToken(String token) {
         return Jwts.parserBuilder().setSigningKey(key()).build()
                 .parseClaimsJwt(token).getBody().getSubject();
     }
 
+    /**
+     * Verify whether the token is valid
+     * @param authToken
+     * @return
+     */
     public boolean validateJwtToken(String authToken) {
         try{
             Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
+            return true;
         }catch (MalformedJwtException e){
             logger.error("Invalid JWT token: {}", e.getMessage());
         }catch (ExpiredJwtException e){
@@ -63,6 +74,6 @@ public class JwtUtils {
         }catch (IllegalArgumentException e){
             logger.error("JWT token is an invalid format: {}", e.getMessage());
         }
-        return true;
+        return false;
     }
 }
