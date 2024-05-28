@@ -24,7 +24,6 @@ import java.io.IOException;
  * @github https://github.com/bodyzxy
  * @date 2024/5/26 22:23
  */
-@Component
 public class AuthTokenFilter extends OncePerRequestFilter {
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 

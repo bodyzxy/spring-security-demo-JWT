@@ -1,4 +1,4 @@
-package com.example.request;
+package com.example.http.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
