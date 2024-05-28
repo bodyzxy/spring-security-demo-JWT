@@ -64,6 +64,10 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+    /**
+     * Because the Role passed is of HashSet type, you need to define deserialization by yourself.
+     * @return
+     */
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
