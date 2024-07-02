@@ -63,6 +63,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 
 ### 注意
 
+
 因为传递的Role是HashSet类型，所以需要自己定义反序列化
 
 ```java
